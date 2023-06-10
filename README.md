@@ -24,3 +24,43 @@ module.exports = {
 
 npm run build
 php artisan serve
+
+# make model and migrations
+php artisan make:model Post -m
+
+ public function up(): void
+  {
+      Schema::create('posts', function (Blueprint $table) {
+          $table->id();
+          $table->string('title');
+          $table->string('image');
+          $table->string('content');
+          $table->timestamps();
+      });
+  }
+
+model post.php
+
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Post extends Model
+{
+    use HasFactory;
+
+    /**
+     * fillable
+     *
+     * @var array
+     */
+    protected $fillable = ['title', 'image', 'content'];
+}
+
+
+php artisan migrate
+
+
