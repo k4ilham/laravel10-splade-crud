@@ -21,3 +21,6 @@ module.exports = {
         autoprefixer: {},
     },
 };
+
+npm run build
+php artisan serve
