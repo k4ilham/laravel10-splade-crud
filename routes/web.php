@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['splade'])->group(function () {
     Route::get('/', fn () => view('home'))->name('home');
     Route::get('/docs', fn () => view('docs'))->name('docs');
+
+    // Posts routes
+    Route::resource('/posts', PostController::class);
 
     // Registers routes to support the interactive components...
     Route::spladeWithVueBridge();
